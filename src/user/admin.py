@@ -56,7 +56,7 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
     # Uncomment to enable #passwordAuth
-    password = ReadOnlyPasswordHashField(label='Хэш от пароля')
+    password = ReadOnlyPasswordHashField(label='Хэш от пароля', help_text=("пока не готова смена пароля, менять <a href=\"../password/\">тут</a>"))
 
     groups = forms.ModelMultipleChoiceField(label='Группы',required=False,widget=FilteredSelectMultiple('Группы',is_stacked=False),queryset=Group.objects.all())
     def clean(self):
