@@ -42,7 +42,7 @@ function showuserinfo(name, vkid, number, email) {
         if (details_added)
             content.appendChild(document.createElement('br'));
         var el_vkid = document.createElement('a');
-        el_vkid.innerText = 'Написать в ВК vk.com/id' + vkid;
+        el_vkid.innerText = 'Написать в ВК vk.ru/id' + vkid;
         el_vkid.href = 'https://vk.me/id' + vkid;
         content.appendChild(el_vkid);
         details_added = true;

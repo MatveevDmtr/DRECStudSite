@@ -262,8 +262,12 @@ window.onload = function() {
                 account = account.substr(8);
             if (account.substr(0, 7) == 'vk.com/')
                 account = account.substr(7);
+            else if (account_name.substr(0, 6) == 'vk.ru/')
+                account_name = account_name.substr(6);
             else if (account.substr(0, 9) == 'm.vk.com/')
                 account = account.substr(9);
+            else if (account_name.substr(0, 8) == 'm.vk.ru/')
+                account_name = account_name.substr(8);
             if (re_id.test(account.substr(2))) {
                 if (account.substr(0, 2) == 'id')
                     account = account.substr(2);

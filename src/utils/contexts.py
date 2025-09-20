@@ -49,4 +49,5 @@ def custom_context(request):
         'next_return': request.path,
         'site_tab_name': settings.SITE_TAB_NAME,
         'VK_API_VERSION': settings.VK_API_VERSION
+        'VK_API_ADDRESS': settings.VK_API_ADDRESS
     }

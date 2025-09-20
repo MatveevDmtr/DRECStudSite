@@ -66,8 +66,12 @@
                         account_name = account_name.substr(8);
                     if (account_name.substr(0, 7) == 'vk.com/')
                         account_name = account_name.substr(7);
+                    else if (account_name.substr(0, 6) == 'vk.ru/')
+                        account_name = account_name.substr(6);
                     else if (account_name.substr(0, 9) == 'm.vk.com/')
                         account_name = account_name.substr(9);
+                    else if (account_name.substr(0, 8) == 'm.vk.ru/')
+                        account_name = account_name.substr(8);
                     //alert(account_name.substr(2));
                     //alert(account_name.substr(2).match("^\\d+$"));
                     if (re_id.test(account_name.substr(2))) {
