@@ -120,6 +120,7 @@ sudo chkconfig postgresql on
 CREATE DATABASE drec_stud_site;
 CREATE USER drec_stud_site_admin;
 GRANT ALL PRIVILEGES ON DATABASE drec_stud_site TO drec_stud_site_admin;
+ALTER DATABASE drec_stud_site OWNER TO drec_stud_site_admin;
 ```
 7. Migrate all your models (don`t forget moving to src/):
 ```bash

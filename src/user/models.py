@@ -10,6 +10,9 @@ from service.models import Service
 from survey.models import Survey, Answer
 from utils.utils import check_unique, get_id_by_url_vk
 
+import secrets
+import string
+
 import datetime
 import re
 
@@ -17,8 +20,15 @@ from .managers import UserManager
 
 # Create your models here.
 
+def my_generate_random_password(length=10, allowed_chars=string.ascii_letters + string.digits + string.punctuation):
+    """
+    hotfix from google ai answer
+    """
+    return ''.join(secrets.choice(allowed_chars) for _ in range(length))
+
 def make_random_password():
-    return User.objects.make_random_password(length = 20)
+    #return User.objects.make_random_password(length = 20)
+    return my_generate_random_password(length = 20)
 
 # Replace next string with this one to enable #passwordAuth
 class User(AbstractBaseUser, PermissionsMixin):
@@ -169,7 +179,8 @@ class Faculty(models.Model):
 
         for i in range(len(patterns)):
             # Add possible subgroup char, like '419a' of '419b'
-            patterns[i] = '^' + patterns[i] + '\w?$'
+            #patterns[i] = '^' + patterns[i] + '\w?$'
+            patterns[i] = '^' + patterns[i] + '\\w?$'
         for p in patterns:
             if re.match(p, s):
                 return True

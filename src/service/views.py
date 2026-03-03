@@ -106,7 +106,8 @@ def unlock(request, slug):
     return HttpResponse(json.dumps(response))
 
 def to_H_M(t):
-    return re.sub(r'(?P<part>^|:)0', '\g<part>', t.strftime('%H:%M'))
+    #return re.sub(r'(?P<part>^|:)0', '\g<part>', t.strftime('%H:%M'))
+    return re.sub(r'(?P<part>^|:)0', '\\g<part>', t.strftime('%H:%M'))
 
 # get orders
 def list_update(request, slug):

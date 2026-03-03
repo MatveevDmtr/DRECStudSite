@@ -35,7 +35,8 @@ def get_django_model_by_string(s):
 def get_id_by_url_vk(s, attempts = 3):
     if not s:
         return None
-    vk_api = vk.API(vk.Session())
+    #vk_api = vk.API(vk.Session())
+    vk_api = vk.API()
     id_is_raw = re.compile(r"^(i|I)d[0-9]+$")
     if s[:7] == 'http://':
         s = s[7:]
