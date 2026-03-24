@@ -35,7 +35,8 @@ def get_django_model_by_string(s):
 def get_id_by_url_vk(s, attempts = 3):
     if not s:
         return None
-    vk_api = vk.API(vk.Session())
+    #vk_api = vk.API(vk.Session())
+    vk_api = vk.API()
     id_is_raw = re.compile(r"^(i|I)d[0-9]+$")
     if s[:7] == 'http://':
         s = s[7:]
@@ -43,15 +44,23 @@ def get_id_by_url_vk(s, attempts = 3):
         s = s[8:]
     if s[:7] == 'vk.com/':
         s = s[7:]
+    elif s[:6] == 'vk.ru/':
+        s = s[6:]
     elif s[:9] == 'm.vk.com/':
         s = s[9:]
+    elif s[:8] == 'm.vk.ru/':
+        s = s[8:]
     if (s[:2] == 'id' or s[:2] == 'Id') and id_is_raw.match(s):
         s = s[2:]
     if s[-1] == '/':
         s = s[:-1]
     while attempts:
         try:
-            s = vk_api.users.get(user_ids = s, v = 573, access_token = settings.SERVICE_KEY_VK)
+            s = vk_api.users.get(
+                user_ids = s,
+                v = settings.VK_API_VERSION,
+                access_token = settings.SERVICE_KEY_VK
+            )
             return s[0]['id']
         except BaseException as e:
             if not isinstance(e, ReadTimeout):

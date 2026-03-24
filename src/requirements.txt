@@ -1,32 +1,43 @@
 # Framework
-Django==2.0
+#Django==2.2.13
+Django==6.0.2
 
 # Python server
-gunicorn==19.7.1
+#gunicorn==19.7.1
+gunicorn==25.1.0
 
 # PostgreSQL library
-psycopg2==2.7.3.2
+#psycopg2==2.7.3
+#psycopg==3.0.15
+psycopg==3.3.3
 
 # Social network authorization
-social-auth-app-django==2.1.0
+#social-auth-app-django==2.1.0
+social-auth-app-django==5.7.0
 
 # Image library
-Pillow==4.2.1
+#Pillow==8.1.1
+Pillow==12.1.1
 
 # Deletes from /media when object deleted (not done by default)
-django-cleanup==1.0.1
+#django-cleanup==1.0.1
+django-cleanup==9.0.0
 
 # Markdown in templates
-django-markdown-deux==1.0.5
+#django-markdown-deux==1.0.5
+django-markdown-deux==1.0.6
 
 # Models can be made sortable in Admin Panel
-django-admin-sortable2==0.6.19
+#django-admin-sortable2==0.7.6
+django-admin-sortable2==2.3.1
 
 # Model version are stored separately, so they can be restored
-django-reversion==2.0.12
+#django-reversion==3.0.0
+django-reversion==6.1.0
 
 # BBCode
-django-precise-bbcode==1.2.8
+#django-precise-bbcode==1.2.8
+django-precise-bbcode==1.2.16
 
 # xlsx & csv terminal viewer
 x-x==0.9
@@ -35,7 +46,8 @@ x-x==0.9
 openpyxl==2.4.8
 
 # Vk API (get user id by short link)
-vk==2.0.2
+#vk==2.0.2
+vk==3.0
 
 # Show progress bar in scripts
 progressbar2==3.34.3
@@ -44,7 +56,27 @@ progressbar2==3.34.3
 pytz==2017.2
 
 # Simple schedules
-django-background-tasks==1.1.12
+#django-background-tasks==1.1.12
+django-background-tasks==1.2.8
 
 # File cloud
-django-filebrowser-no-grappelli==3.7.4
+#django-filebrowser-no-grappelli==3.7.4
+django-filebrowser-no-grappelli==4.0.2
+
+# Freeze time for Ordering tests
+#freezegun==0.3.10
+freezegun==1.5.5
+
+# Clears media files, unused by models
+# usage: ./manage.py cleanup_unused_media -e 'admin_documents/*'
+#django-unused-media==0.1.12
+django-unused-media==0.2.2
+
+# HAML engine for Django
+django-hamlpy==1.1.1
+#django-hamlpy==1.7.0
+
+# SASS compiler
+#libsass==0.15.1
+libsass==0.23.0
+

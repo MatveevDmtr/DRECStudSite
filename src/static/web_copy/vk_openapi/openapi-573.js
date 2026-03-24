@@ -131,7 +131,7 @@
   // XDM object
   w.fastXDM = {
     _id: 0,
-    helperUrl: 'https://vk.com/js/api/xdmHelper.js',
+    helperUrl: 'https://vk.ru/js/api/xdmHelper.js',
 
     Server: function(methods, filter, options) {
       this.methods   = methods || {};
@@ -368,7 +368,7 @@ if(!VK.MD5){VK.MD5=function(n){var j=function(o,r){var q=(o&65535)+(r&65535),p=(
 
 /*
  * VKontakte Open API JavaScript library
- * http://vk.com/
+ * http://vk.ru/
  */
 
 VK.extend = function(target, source, overwrite) {
@@ -390,8 +390,8 @@ if (!VK.xdConnectionCallbacks) {
     _session: null,
     _userStatus: 'unknown',
     _domain: {
-      main: 'https://oauth.vk.com/',
-      api: 'https://api.vk.com/'
+      main: 'https://oauth.vk.ru/',
+      api: 'https://api.vk.ru/'
     },
     _path: {
       login: 'authorize',
@@ -606,7 +606,7 @@ if (!VK.xdConnectionCallbacks) {
           if (!text) {
             text = '';
           }
-          var query =  VK._protocol + '//vk.com/al_apps.php?act=wall_post_box&widget=4&method='+m+'&aid=' + parseInt(VK._apiId, 10) + '&text=' + encodeURIComponent(text);
+          var query =  VK._protocol + '//vk.ru/al_apps.php?act=wall_post_box&widget=4&method='+m+'&aid=' + parseInt(VK._apiId, 10) + '&text=' + encodeURIComponent(text);
           if (m == 'wall.post') {
             query += '&owner_id=' + parseInt(params.owner_id || 0, 10) + '&attachments=' + (params.attachments || params.attachment || '') + '&publish_date=' + (params.publish_date || '');
           }
@@ -629,7 +629,7 @@ if (!VK.xdConnectionCallbacks) {
 
         if (m == 'messages.allowmessagesfromgroup') {
           var method_access = '_' + (Math.random()).toString(16).substr(2);
-          var query = VK._protocol + '//vk.com/widget_allow_messages_from_community.php?act=allow_box&group_id=' + parseInt(params.group_id, 10) + '&app_id=' + parseInt(VK._apiId, 10) + '&method_access=' + method_access;
+          var query = VK._protocol + '//vk.ru/widget_allow_messages_from_community.php?act=allow_box&group_id=' + parseInt(params.group_id, 10) + '&app_id=' + parseInt(VK._apiId, 10) + '&method_access=' + method_access;
 
           VK.UI.popup({
             url: query,
@@ -836,7 +836,7 @@ if (!VK.xdConnectionCallbacks) {
         setTimeout(popupCheck, 100);
       },
 
-      // Logout user from app, vk.com & login.vk.com
+      // Logout user from app, vk.ru & login.vk.ru
       logout: function(cb) {
         VK.Auth.revokeGrants(cb);
       },
@@ -851,7 +851,7 @@ if (!VK.xdConnectionCallbacks) {
 
         VK.Observer.subscribe('auth.statusChange', onLogout);
         if (VK._session && VK._session.sid) {
-          var url = 'https://login.vk.com/?act=openapi&oauth=1&aid=' + parseInt(VK._apiId, 10) + '&location=' + encodeURIComponent(window.location.hostname) + '&do_logout=1&token=' + VK._session.sid;
+          var url = 'https://login.vk.ru/?act=openapi&oauth=1&aid=' + parseInt(VK._apiId, 10) + '&location=' + encodeURIComponent(window.location.hostname) + '&do_logout=1&token=' + VK._session.sid;
           if (VK.Api.supportCORS()) {
             var logoutCallback = function() {
               VK.Auth.setSession(null, 'unknown');
@@ -871,7 +871,7 @@ if (!VK.xdConnectionCallbacks) {
         return VK._session;
       },
 
-      // Get current login status from vk.com (async)
+      // Get current login status from vk.ru (async)
       getLoginStatus: function(cb, force) {
         if (!VK._apiId) {
           return;
@@ -892,7 +892,7 @@ if (!VK.xdConnectionCallbacks) {
 
         VK.Auth._loadState = 'loading';
 
-        var url = 'https://login.vk.com/?act=openapi&oauth=1&aid=' + parseInt(VK._apiId, 10) + '&location=' + encodeURIComponent(window.location.hostname);
+        var url = 'https://login.vk.ru/?act=openapi&oauth=1&aid=' + parseInt(VK._apiId, 10) + '&location=' + encodeURIComponent(window.location.hostname);
         if (VK.Api.supportCORS()) {
           var loginCallback = function(response) {
             if (!this.JSON) {
@@ -996,7 +996,7 @@ if (!VK.xdConnectionCallbacks) {
         if (!url || !VK._apiId || VK.App._appOpened) {
           return;
         }
-        src = VK._protocol + '//vk.com/apps?act=open_external_app_openapi&aid=' + VK._apiId;
+        src = VK._protocol + '//vk.ru/apps?act=open_external_app_openapi&aid=' + VK._apiId;
         params['aid'] = VK._apiId;
 
         for (var arg in params) {
@@ -1079,7 +1079,7 @@ if (!VK.UI) {
       html = (
           '<table cellspacing="0" cellpadding="0" id="openapi_UI_' + index + '" onmouseover="VK.UI._change(1, ' + index + ');" onmouseout="VK.UI._change(0, ' + index + ');" onmousedown="VK.UI._change(2, ' + index + ');" onmouseup="VK.UI._change(1, ' + index + ');" style="cursor: pointer; border: 0px; font-family: tahoma, arial, verdana, sans-serif, Lucida Sans; font-size: 10px;"><tr style="vertical-align: middle">' +
           '<td><div style="border: 1px solid #3b6798;border-radius: 2px 0px 0px 2px;-moz-border-radius: 2px 0px 0px 2px;-webkit-border-radius: 2px 0px 0px 2px;"><div style="border: 1px solid #5c82ab; border-top-color: #7e9cbc; background-color: #6D8DB1; color: #fff; text-shadow: 0px 1px #45688E; height: 15px; padding: 2px 4px 0px 6px;line-height: 13px;">&#1042;&#1086;&#1081;&#1090;&#1080;</div></div></td>' +
-          '<td><div style="background: url(' + VK._protocol + '//vk.com/images/btns.png) 0px -42px no-repeat; width: 21px; height: 21px"></div></td>' +
+          '<td><div style="background: url(' + VK._protocol + '//vk.ru/images/btns.png) 0px -42px no-repeat; width: 21px; height: 21px"></div></td>' +
           '<td><div style="border: 1px solid #3b6798;border-radius: 0px 2px 2px 0px;-moz-border-radius: 0px 2px 2px 0px;-webkit-border-radius: 0px 2px 2px 0px;"><div style="border: 1px solid #5c82ab; border-top-color: #7e9cbc; background-color: #6D8DB1; color: #fff; text-shadow: 0px 1px #45688E; height: 15px; padding: 2px 6px 0px 4px;line-height: 13px;">&#1050;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1077;</div></div></td>' +
           '</tr></table>'
       );
@@ -1200,13 +1200,13 @@ if (!VK.Widgets) {
   VK.Widgets.RPC = {};
 
   VK.Widgets.showBoxUrl = function(domain, url) {
-    domain = (domain || VK._protocol + '//vk.com').replace(/\/?\s*$/, '');
+    domain = (domain || VK._protocol + '//vk.ru').replace(/\/?\s*$/, '');
     url = url.replace(/^\s*\/?/, '');
     return domain + '/' + url;
   };
 
   VK.Widgets.loading = function(obj, enabled) {
-    obj.style.background = enabled ? 'url("' + VK._protocol + '//vk.com/images/upload.gif") center center no-repeat transparent' : 'none';
+    obj.style.background = enabled ? 'url("' + VK._protocol + '//vk.ru/images/upload.gif") center center no-repeat transparent' : 'none';
   };
 
   VK.Widgets.Comments = function(objId, options, page) {
@@ -1805,7 +1805,7 @@ if (!VK.Widgets) {
         window.vk__adsLight = false;
         adsScriptVersion = parseInt(adsScriptVersion);
         var attachScriptFunc = (VK.Api && VK.Api.attachScript || VK.addScript);
-        var base_domain = (options.base_domain || VK._protocol + '//vk.com');
+        var base_domain = (options.base_domain || VK._protocol + '//vk.ru');
         attachScriptFunc(base_domain + '/js/al/aes_light.js?' + adsScriptVersion);
       } else if (window.vk__adsLight && vk__adsLight.userHandlers && vk__adsLight.userHandlers.onInit) {
         vk__adsLight.userHandlers.onInit(false); // false - do not publish initial onInit
@@ -2012,7 +2012,7 @@ if (!VK.Widgets) {
       options.height = 399;
 
       if (!options.base_domain) {
-        options.base_domain = options.base_domain || VK._protocol + '//vk.com';
+        options.base_domain = options.base_domain || VK._protocol + '//vk.ru';
       }
 
       options.expandTimeout = parseInt(options.expandTimeout) || 0;
@@ -2377,7 +2377,7 @@ if (!VK.Widgets) {
     }
 
     var ifr, url, urlQueryString, encodedParam, rpc, iframe, i,
-      base_domain = options.base_domain || VK._protocol + '//vk.com',
+      base_domain = options.base_domain || VK._protocol + '//vk.ru',
       width = options.width === 'auto' ? (obj.clientWidth || obj.offsetWidth || defaults.minWidth) | 0 : parseInt(options.width || 0, 10);
     width = width ? (Math.max(defaults.minWidth || 200, Math.min(defaults.maxWidth || 10000, width)) + 'px') : '100%';
     obj.style.width = width;
@@ -2467,7 +2467,7 @@ if (!VK.Widgets) {
     };
     funcs.updateVersion = function(ver) {
       if (ver > 1) {
-        VK.Api.attachScript('//vk.com/js/api/openapi_update.js?'+parseInt(ver));
+        VK.Api.attachScript('//vk.ru/js/api/openapi_update.js?'+parseInt(ver));
       }
     };
     rpc = VK.Widgets.RPC[widgetId] = new fastXDM.Server(funcs, function(origin) {
@@ -2623,7 +2623,7 @@ if (!VK.Util) {
             src: src.replace(/&amp;/g, '&'),
             scrolling: 'no',
             allowTransparency: true,
-            style: {position: 'fixed', left: 0, top: 0, zIndex: 1002, background: VK._protocol + '//vk.com/images/upload.gif center center no-repeat transparent', padding: '0', border: '0', width: '100%', height: '100%', overflow: 'hidden', visibility: 'hidden'}
+            style: {position: 'fixed', left: 0, top: 0, zIndex: 1002, background: VK._protocol + '//vk.ru/images/upload.gif center center no-repeat transparent', padding: '0', border: '0', width: '100%', height: '100%', overflow: 'hidden', visibility: 'hidden'}
           });
       return {
         show: function(scrollTop, height) {
@@ -2670,7 +2670,7 @@ if (!VK.Retargeting) {
         return;
       }
 
-      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=' + this.pixelCode + (event ? ('&event=' + encodeURIComponent(event)) : '');
+      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.ru/rtrg?p=' + this.pixelCode + (event ? ('&event=' + encodeURIComponent(event)) : '');
     },
     Hit: function () {
       this.Event();
@@ -2680,7 +2680,7 @@ if (!VK.Retargeting) {
         return;
       }
 
-      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=' + this.pixelCode + '&audience=' + encodeURIComponent(audienceID);
+      (window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.ru/rtrg?p=' + this.pixelCode + '&audience=' + encodeURIComponent(audienceID);
     },
     ProductEvent: function (priceListID, event, params, opts) {
       if (!this.pixelCode || !event || !priceListID) {
@@ -2698,7 +2698,7 @@ if (!VK.Retargeting) {
         errorsIgnore = opts.errors_ignore ? '1' : '0';
       }
 
-      var url = 'https://vk.com/rtrg';
+      var url = 'https://vk.ru/rtrg';
       var productParams = params ? JSON.stringify(params) : '';
       var requestParams = {
         'p': this.pixelCode,

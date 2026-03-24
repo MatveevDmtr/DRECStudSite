@@ -106,7 +106,8 @@ def unlock(request, slug):
     return HttpResponse(json.dumps(response))
 
 def to_H_M(t):
-    return re.sub(r'(?P<part>^|:)0', '\g<part>', t.strftime('%H:%M'))
+    #return re.sub(r'(?P<part>^|:)0', '\g<part>', t.strftime('%H:%M'))
+    return re.sub(r'(?P<part>^|:)0', '\\g<part>', t.strftime('%H:%M'))
 
 # get orders
 def list_update(request, slug):
@@ -129,7 +130,7 @@ def _is_int(s):
 
 class ServiceListView(ListView):
     model = Service
-    template_name = 'service_list.html'
+    template_name = 'service_list1.html'
     # yandex payment logic
     def post(self, request, *args, **kwargs):
         log_error = False
